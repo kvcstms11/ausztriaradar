@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ausztria Radar — Napi osztrák hírek magyarul</title>
+  <meta name="description" content="Ingyenes napi email digest: osztrák hírek, szabályok, támogatások — magyarul, érthetően. Ausztriában élő magyaroknak.">
+  <meta property="og:title" content="Ausztria Radar — Napi osztrák hírek magyarul">
+  <meta property="og:description" content="Ingyenes napi email: osztrák hírek, szabályok, támogatások — érthetően, 3 perc olvasás.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ausztriaradar.hu">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇦🇹</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1D3557;
+      --red: #E63946;
+      --cream: #F1FAEE;
+      --teal: #A8DADC;
+      --teal-dark: #457B9D;
+      --gold: #D4A017;
+      --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', -apple-system, sans-serif;
+      color: var(--navy);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(168,218,220,0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(230,57,70,0.08) 0%, transparent 40%),
+        var(--cream);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231D3557' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .flag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 2px solid var(--teal);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal-dark);
+      margin-bottom: 32px;
+      animation: fadeDown 0.6s ease-out;
+    }
+
+    .flag-badge span { font-size: 20px; }
+
+    h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 20px;
+      animation: fadeDown 0.6s ease-out 0.1s both;
+    }
+
+    h1 .accent { color: var(--red); }
+
+    .subtitle {
+      font-size: clamp(18px, 3vw, 22px);
+      line-height: 1.6;
+      color: var(--teal-dark);
+      margin-bottom: 40px;
+      font-weight: 400;
+      animation: fadeDown 0.6s ease-out 0.2s both;
+    }
+
+    /* ─── SIGNUP FORM ─── */
+    .signup-box {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow:
+        0 4px 24px rgba(29,53,87,0.08),
+        0 1px 3px rgba(29,53,87,0.06);
+      max-width: 480px;
+      margin: 0 auto;
+      animation: fadeUp 0.6s ease-out 0.3s both;
+    }
+
+    .signup-box h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .signup-box p {
+      font-size: 14px;
+      color: var(--teal-dark);
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-row input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      border: 2px solid #E0E8ED;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-row input[type="email"]:focus {
+      border-color: var(--teal-dark);
+    }
+
+    .form-row button {
+      padding: 14px 28px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .form-row button:hover {
+      background: #C62D3A;
+      transform: translateY(-1px);
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: #999;
+      margin-top: 12px;
+    }
+
+    /* ─── FEATURES ─── */
+    .features {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+
+    .features-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .feature-card {
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid #E8EEF2;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(29,53,87,0.08);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ─── SAMPLE ─── */
+    .sample {
+      padding: 80px 24px;
+      background: var(--cream);
+    }
+
+    .sample-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(28px, 4vw, 38px);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .sample-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(29,53,87,0.08);
+    }
+
+    .sample-header {
+      background: var(--navy);
+      padding: 20px 24px;
+    }
+
+    .sample-header h3 {
+      color: var(--cream);
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 18px;
+    }
+
+    .sample-header p {
+      color: var(--teal);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .sample-item {
+      padding: 20px 24px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+
+    .sample-item:last-child { border-bottom: none; }
+
+    .sample-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .sample-badge.normal {
+      background: var(--teal-dark);
+    }
+
+    .sample-item h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .sample-item p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .sample-bullets {
+      margin-top: 8px;
+      padding-left: 16px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .sample-bullets li {
+      margin-bottom: 4px;
+    }
+
+    .sample-source {
+      font-size: 12px;
+      color: #999;
+      margin-top: 8px;
+    }
+
+    /* ─── CTA ─── */
+    .cta {
+      padding: 80px 24px;
+      background: var(--navy);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(28px, 4vw, 38px);
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: var(--teal);
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .cta .signup-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(168,218,220,0.2);
+    }
+
+    .cta .signup-box h3 { color: var(--cream); }
+    .cta .signup-box p { color: var(--teal); }
+
+    .cta .form-row input[type="email"] {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(168,218,220,0.3);
+      color: var(--white);
+    }
+
+    .cta .form-row input[type="email"]::placeholder { color: rgba(168,218,220,0.6); }
+    .cta .form-note { color: rgba(168,218,220,0.5); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+      background: var(--cream);
+    }
+
+    footer a { color: var(--teal-dark); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 520px) {
+      .form-row {
+        flex-direction: column;
+      }
+
+      .form-row button {
+        width: 100%;
+      }
+
+      .signup-box {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="flag-badge">
+        <span>🇦🇹</span> Osztrák hírek <span>🇭🇺</span> magyar nyelven
+      </div>
+      <h1>Ausztria <span class="accent">Radar</span></h1>
+      <p class="subtitle">Napi email digest: osztrák hírek, szabályok, támogatások — magyarul, érthetően. 3 perc olvasás, minden reggel az inboxodban.</p>
+
+      <div class="signup-box">
+        <h3>Iratkozz fel ingyen</h3>
+        <p>Hétfőtől péntekig napi digest + szombaton gyakorlati útmutató</p>
+
+        <!-- ╔══════════════════════════════════════════╗
+             ║  MAILCHIMP: cseréld ki az action URL-t   ║
+             ║  a saját Mailchimp form action-ödre!     ║
+             ╚══════════════════════════════════════════╝ -->
+        <form action="https://ausztriaradar.us00.list-manage.com/subscribe/post?u=XXXXXXX&amp;id=YYYYYYY" method="post" target="_blank">
+          <div class="form-row">
+            <input type="email" name="EMAIL" placeholder="email@cimed.hu" required>
+            <button type="submit">Feliratkozás</button>
+          </div>
+        </form>
+        <p class="form-note">Ingyenes. Bármikor leiratkozhatsz. Nem spammelünk.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">📰</span>
+        <h3>6–10 hír, szűrve</h3>
+        <p>ORF, Der Standard, Kurier, Krone, Die Presse — összegyűjtjük, szűrjük, és csak az osztrák vonatkozásút tartjuk meg.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🇭🇺</span>
+        <h3>Magyarul, érthetően</h3>
+        <p>Nem gépi fordítás, hanem értelmezett összefoglaló: minden hírhez „Mit jelent ez neked?" blokk, célcsoporttal és konkrét lépésekkel.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>3 perc, minden reggel</h3>
+        <p>Hétfőtől péntekig 7:00-kor a postaládádban. Top 3 kiemelés + kategóriák: politika, gazdaság, munka, lakhatás, támogatások.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📋</span>
+        <h3>Szombati praktikum</h3>
+        <p>Hétvégén gyakorlati útmutató: ID Austria, Meldezettel, E-Card, bankszámlanyitás — lépésről lépésre, hivatalos forrásokból.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔗</span>
+        <h3>Eredeti források</h3>
+        <p>Minden hírhez kattintható link az eredetihez. Több forrásnál jelezzük, ha eltérő nézőpontból írnak.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤖</span>
+        <h3>AI + emberi kontroll</h3>
+        <p>Mesterséges intelligencia dolgozza fel a híreket, de a szerkesztési szabályok és minőségellenőrzés emberek munkája.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAMPLE -->
+  <section class="sample">
+    <div class="sample-inner">
+      <h2 class="section-title">Ilyen egy napi digest</h2>
+      <div class="sample-card">
+        <div class="sample-header">
+          <h3>🇦🇹 Ausztria Radar</h3>
+          <p>2026. február 26., csütörtök — 6 fontos hír</p>
+        </div>
+
+        <div class="sample-item">
+          <span class="sample-badge">TOP 1</span>
+          <h4>Új jelölési kötelezettség a zsugorinflációra</h4>
+          <p>Az új osztrák törvény kötelezi a kereskedőket, hogy figyelmeztető címkékkel jelöljék a rejtett áremeléseket.</p>
+          <ul class="sample-bullets">
+            <li>Könnyebben felismerheted a rejtett drágulást a boltokban</li>
+            <li>Vásárlóként továbbra is neked kell összehasonlítani</li>
+            <li>A jelölések már megjelentek az osztrák boltokban</li>
+          </ul>
+          <p class="sample-source">Forrás: Der Standard</p>
+        </div>
+
+        <div class="sample-item">
+          <span class="sample-badge">TOP 2</span>
+          <h4>Az Arbeiterkammer 948 millió eurót harcolt ki</h4>
+          <p>Az AK 2025-ben 948 millió eurót szerzett vissza tagjai számára jogi eljárásokban.</p>
+          <ul class="sample-bullets">
+            <li>AK-tagként ingyenes jogi tanácsadás és képviselet jár</li>
+            <li>Részmunkaidősökre külön fókuszálnak idén</li>
+            <li>Részletek az Arbeiterkammer honlapján</li>
+          </ul>
+          <p class="sample-source">Forrás: Der Standard</p>
+        </div>
+
+        <div class="sample-item">
+          <span class="sample-badge normal">📍 Helyi</span>
+          <h4>Daniel Fellner lesz Karintia új tartományi főkormányzója</h4>
+          <p>Peter Kaiser március 31-én lemond, utóda Daniel Fellner (SPÖ), április 8-án lép hivatalba.</p>
+          <p class="sample-source">Forrás: Kurier</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ne maradj le semmiről</h2>
+    <p>Csatlakozz az Ausztriában élő magyarok közösségéhez</p>
+    <div class="signup-box">
+      <h3>Kezdd el holnap reggel</h3>
+      <p>Első email a feliratkozás utáni munkanapon érkezik</p>
+      <form action="https://ausztriaradar.us00.list-manage.com/subscribe/post?u=XXXXXXX&amp;id=YYYYYYY" method="post" target="_blank">
+        <div class="form-row">
+          <input type="email" name="EMAIL" placeholder="email@cimed.hu" required>
+          <button type="submit">Feliratkozás</button>
+        </div>
+      </form>
+      <p class="form-note">Ingyenes. Bármikor leiratkozhatsz.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Ausztria Radar · <a href="mailto:coxika11@gmail.com">Kapcsolat</a> · Készült Grazban 🇦🇹</p>
+  </footer>
+
+</body>
+</html>
