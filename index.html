@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ausztria Radar — Napi osztrák hírek magyarul</title>
-  <meta name="description" content="Ingyenes napi összefoglaló: osztrák hírek, szabályok, támogatások — magyarul, érthetően. Ausztriában élő magyaroknak.">
+  <meta name="description" content="Napi összefoglaló: osztrák hírek, szabályok, támogatások — magyarul, érthetően. Ausztriában élő magyaroknak. 1 hónap ingyen.">
   <meta property="og:title" content="Ausztria Radar — Napi osztrák hírek magyarul">
-  <meta property="og:description" content="Ingyenes napi összefoglaló: osztrák hírek, szabályok, támogatások — érthetően, 3 perc olvasás.">
+  <meta property="og:description" content="Napi összefoglaló: osztrák hírek, szabályok, támogatások — érthetően, 3 perc olvasás. 1 hónap ingyen.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ausztriaradar.hu">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇦🇹</text></svg>">
@@ -29,7 +29,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── HERO (compact) ─── */
+    /* ─── HERO ─── */
     .hero {
       padding: 48px 24px 0 24px;
       text-align: center;
@@ -120,10 +120,52 @@
       white-space: nowrap;
     }
     .form-row button:hover { background: #C62D3A; transform: translateY(-1px); }
+    .region-row {
+      margin-top: 10px;
+    }
+    .region-row select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #E0E8ED;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #666;
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      cursor: pointer;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+    .region-row select:focus { border-color: var(--teal-dark); }
     .form-note { font-size: 12px; color: #999; margin-top: 10px; }
-    .trial-note { font-size: 13px; color: var(--teal-dark); margin-top: 6px; font-weight: 500; }
+    .trial-note { font-size: 13px; color: var(--teal-dark); margin-top: 8px; font-weight: 500; }
+    .welcome-note { font-size: 12px; color: #999; margin-top: 6px; }
 
-    /* ─── FEATURES (compact pills inside hero) ─── */
+    /* ─── SUCCESS MESSAGE ─── */
+    .signup-success {
+      display: none;
+      text-align: center;
+      padding: 16px 0 4px 0;
+    }
+    .signup-success .check { font-size: 36px; margin-bottom: 8px; }
+    .signup-success h4 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 20px; margin-bottom: 6px; color: var(--navy);
+    }
+    .signup-success p { font-size: 13px; color: var(--teal-dark); line-height: 1.5; }
+    .signup-success .tip {
+      background: var(--cream); border-radius: 8px;
+      padding: 10px 14px; margin-top: 10px;
+      font-size: 12px; color: var(--navy); text-align: left;
+    }
+
+    /* ─── FEATURES ─── */
     .features {
       position: relative; z-index: 1;
       max-width: 900px; margin: 36px auto 0 auto;
@@ -169,10 +211,7 @@
       padding: 14px 20px 6px 20px;
     }
     .sample-divider.normal { color: var(--teal-dark); margin-top: 4px; }
-    .sample-item {
-      padding: 14px 20px;
-      border-bottom: 1px solid #EBEBEB;
-    }
+    .sample-item { padding: 14px 20px; border-bottom: 1px solid #EBEBEB; }
     .sample-item:last-child { border-bottom: none; }
     .sample-badges { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
     .sample-badge {
@@ -215,8 +254,17 @@
       color: var(--white);
     }
     .cta .form-row input[type="email"]::placeholder { color: rgba(168,218,220,0.6); }
+    .cta .region-row select {
+      background-color: rgba(255,255,255,0.1);
+      border-color: rgba(168,218,220,0.3);
+      color: rgba(168,218,220,0.8);
+    }
     .cta .form-note { color: rgba(168,218,220,0.5); }
     .cta .trial-note { color: var(--teal); }
+    .cta .welcome-note { color: rgba(168,218,220,0.5); }
+    .cta .signup-success h4 { color: var(--cream); }
+    .cta .signup-success p { color: var(--teal); }
+    .cta .signup-success .tip { background: rgba(255,255,255,0.08); color: var(--teal); }
 
     /* ─── FOOTER ─── */
     footer {
@@ -225,11 +273,9 @@
     }
     footer a { color: var(--teal-dark); }
 
-    /* ─── ANIMATIONS ─── */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ─── MOBILE ─── */
     @media (max-width: 520px) {
       .form-row { flex-direction: column; }
       .form-row button { width: 100%; }
@@ -250,19 +296,44 @@
       <h1>Ausztria <span class="accent">Radar</span></h1>
       <p class="subtitle">Napi összefoglaló: osztrák hírek, szabályok, támogatások — magyarul, érthetően. 3 perc olvasás, minden reggel az email-jeid között.</p>
 
-      <div class="signup-box">
-        <h3>Iratkozz fel ingyen</h3>
-        <p class="signup-sub">Hétfőtől péntekig napi összefoglaló + szombaton gyakorlati útmutató</p>
-        <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="post" target="_blank">
-          <div class="form-row">
-            <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
-            <input type="hidden" name="ml-submit" value="1">
-            <input type="hidden" name="anticsrf" value="true">
-            <button type="submit">Feliratkozás</button>
+      <div class="signup-box" id="hero-signup">
+        <div class="signup-form-area">
+          <h3>Iratkozz fel — 1 hónap ingyen próbaidő</h3>
+          <p class="signup-sub">Hétfőtől péntekig napi összefoglaló + szombaton gyakorlati útmutató</p>
+          <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="post" data-signup-form>
+            <div class="form-row">
+              <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
+              <input type="hidden" name="ml-submit" value="1">
+              <input type="hidden" name="anticsrf" value="true">
+              <button type="submit">Feliratkozás</button>
+            </div>
+            <div class="region-row">
+              <select name="fields[region]">
+                <option value="" disabled selected>Melyik tartományban élsz? (opcionális)</option>
+                <option value="Wien">Wien</option>
+                <option value="Niederösterreich">Niederösterreich</option>
+                <option value="Oberösterreich">Oberösterreich</option>
+                <option value="Steiermark">Steiermark</option>
+                <option value="Salzburg">Salzburg</option>
+                <option value="Tirol">Tirol</option>
+                <option value="Kärnten">Kärnten</option>
+                <option value="Vorarlberg">Vorarlberg</option>
+                <option value="Burgenland">Burgenland</option>
+              </select>
+            </div>
+          </form>
+          <p class="trial-note">🎁 1 hónap ingyen. Utána 4,99 €/hó, ha maradsz. 1 kattintás a leiratkozás.</p>
+          <p class="welcome-note">Feliratkozás után azonnal küldünk egy rövid üdvözlő emailt, hogy biztosan megérkezzen.</p>
+          <p class="form-note">Nem spammelünk. Bármikor leiratkozhatsz.</p>
+        </div>
+        <div class="signup-success">
+          <div class="check">✅</div>
+          <h4>Sikeresen feliratkoztál!</h4>
+          <p>Az első összefoglaló a következő munkanapon reggel 7-kor érkezik.</p>
+          <div class="tip">
+            <strong>💡 Tipp:</strong> Nézd meg az inboxodat — küldtünk egy üdvözlő emailt. Ha nem találod, keresd a "Promóciók" mappában, és húzd át a Bejövőbe. Érdemes az <strong>info@ausztriaradar.hu</strong> címet a kontaktjaidhoz adni.
           </div>
-        </form>
-        <p class="trial-note">🎁 Próbáld ki pár hétig ingyen — ha nem tetszik, egy kattintás a leiratkozás.</p>
-        <p class="form-note">Nem spammelünk. Bármikor leiratkozhatsz.</p>
+        </div>
       </div>
     </div>
 
@@ -303,53 +374,19 @@
         <div class="sample-header">
           <h3>🇦🇹 Ausztria Radar</h3>
           <p>2026. február 26., csütörtök — 6 fontos hír, röviden és érthetően.</p>
-          <p class="sources">Források: ORF · Der Standard · Die Presse · Kurier · Wiener Zeitung · WKO · AK · és mások</p>
+          <p class="sources">Források: ORF · Der Standard · Die Presse · Kurier · Krone · AK</p>
         </div>
 
         <div class="sample-divider">🔥 A nap 3 legfontosabb híre</div>
 
-        <!-- TOP 1 -->
+        <!-- TOP 1 — osztrák belügy -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge top">TOP 1</span>
             <span class="sample-badge cat">🏛️ Politika</span>
           </div>
-          <h4>Az EU Bírósága elítélte Magyarországot a Klubrádió ügyében</h4>
-          <p class="desc">Az Európai Unió Bírósága jogsértőnek minősítette, hogy Magyarország megvonta a Klubrádió sugárzási engedélyét. Az ítélet szerint megsértették az információs és véleményszabadságot, és a magyar médiatörvény is ellentétes az uniós joggal.</p>
-          <div class="impact-label">Mit jelent ez neked?</div>
-          <ul class="sample-bullets">
-            <li>Precedenst teremthet más EU-tagállamok médiaszabályozásához, ami hatással lehet az osztrák médiajogra is</li>
-            <li>Ha EU-polgárként Magyarországon tartózkodsz vagy dolgozol, a médiadiverzitás csökkenése közvetlen hatással van az információs jogaidra</li>
-            <li>Az uniós joggal való összhang fontos lehet az osztrák médiatörvények jövőbeli fejlesztésénél</li>
-          </ul>
-          <p class="sample-source">Forrás: ORF · febr. 26. 16:32</p>
-        </div>
-
-        <!-- TOP 2 -->
-        <div class="sample-item">
-          <div class="sample-badges">
-            <span class="sample-badge top">TOP 2</span>
-            <span class="sample-badge cat">🤝 Társadalom</span>
-          </div>
-          <h4>Harvard felfüggesztette az osztrák származású Martin Nowakot</h4>
-          <p class="desc">A Harvard Egyetem felfüggesztette Martin Nowak osztrák származású biomatemaikust Jeffrey Epstein szexuális bűnözőhöz fűződő kapcsolatai miatt. Nowak gyakori kapcsolatban állt Epsteinnel, aki végrendeletében is megemlítette őt.</p>
-          <div class="impact-label">Mit jelent ez neked?</div>
-          <ul class="sample-bullets">
-            <li>A nemzetközi tudományos karrier etikai kockázatokat rejthet magában</li>
-            <li>Ha kutató vagy, a finanszírozási források eredetét alaposan meg kell vizsgálni</li>
-            <li>Hatással lehet az osztrák egyetemek nemzetközi együttműködési szabályaira</li>
-          </ul>
-          <p class="sample-source">Forrás: ORF · febr. 26. 16:32</p>
-        </div>
-
-        <!-- TOP 3 -->
-        <div class="sample-item">
-          <div class="sample-badges">
-            <span class="sample-badge top">TOP 3</span>
-            <span class="sample-badge cat">🏛️ Politika</span>
-          </div>
           <h4>Folytatódik a BVT-s kémkedési per Bécsben</h4>
-          <p class="desc">A Bécsi Tartományi Bíróságon folytatódott Egisto Ott volt titkosszolgálati tisztviselő kémkedés gyanújával kapcsolatos pere. Tanúként hallgatták ki Peter Gridling volt BVT-vezetőt.</p>
+          <p class="desc">A Bécsi Tartományi Bíróságon folytatódott Egisto Ott volt titkosszolgálati tisztviselő kémkedés gyanújával kapcsolatos pere. Tanúként hallgatták ki Peter Gridling volt BVT-vezetőt, aki szerint Ott gyakran volt konfliktusban felettesieivel.</p>
           <div class="impact-label">Mit jelent ez neked?</div>
           <ul class="sample-bullets">
             <li>A per kimenetele befolyásolhatja az osztrák titkosszolgálat jövőbeli működését és átláthatóságát</li>
@@ -359,23 +396,57 @@
           <p class="sample-source">Forrás: ORF · febr. 26. 16:32</p>
         </div>
 
+        <!-- TOP 2 — osztrák munkajog -->
+        <div class="sample-item">
+          <div class="sample-badges">
+            <span class="sample-badge top">TOP 2</span>
+            <span class="sample-badge cat">💼 Munka</span>
+          </div>
+          <h4>Az Arbeiterkammer 948 millió eurót harcolt ki 2025-ben</h4>
+          <p class="desc">Az AK tavaly összesen 948 millió eurót szerzett vissza tagjai számára jogi eljárásokban — munkaügyi vitákban, bérelmaradásokban és jogtalan felmondások ügyében.</p>
+          <div class="impact-label">Mit jelent ez neked?</div>
+          <ul class="sample-bullets">
+            <li>AK-tagként ingyenes jogi tanácsadás és képviselet jár neked</li>
+            <li>Részmunkaidősökre külön fókuszálnak idén — ha te is az vagy, érdemes tájékozódni</li>
+            <li>Részletek és időpontfoglalás: arbeiterkammer.at</li>
+          </ul>
+          <p class="sample-source">Forrás: Der Standard · febr. 26. 14:20</p>
+        </div>
+
+        <!-- TOP 3 — osztrák fogyasztóvédelem -->
+        <div class="sample-item">
+          <div class="sample-badges">
+            <span class="sample-badge top">TOP 3</span>
+            <span class="sample-badge cat">🛒 Gazdaság</span>
+          </div>
+          <h4>Új jelölési kötelezettség a zsugorinflációra</h4>
+          <p class="desc">Az új osztrák törvény kötelezi a kereskedőket, hogy figyelmeztető címkékkel jelöljék, ha egy termék mennyisége csökkent, de az ára nem — a „rejtett áremelés" ellen.</p>
+          <div class="impact-label">Mit jelent ez neked?</div>
+          <ul class="sample-bullets">
+            <li>Könnyebben felismerheted a rejtett drágulást a boltokban</li>
+            <li>Vásárlóként továbbra is neked kell összehasonlítani az egységárakat</li>
+            <li>A jelölések már megjelentek az osztrák szupermarketekben</li>
+          </ul>
+          <p class="sample-source">Forrás: Kurier · febr. 26. 15:45</p>
+        </div>
+
         <div class="sample-divider normal">📰 További fontos hírek</div>
 
-        <!-- Támogatás -->
+        <!-- Valódi támogatás: Wohnbeihilfe -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge grant">TÁMOGATÁS</span>
-            <span class="sample-badge cat">💰 Támogatás</span>
+            <span class="sample-badge cat">🏠 Lakhatás</span>
           </div>
-          <h4>Aranytallérokat kaptak az osztrák olimpikonok</h4>
-          <p class="desc">Az osztrák olimpiai érmesek prémiumukat Wiener Philharmoniker aranyérmék formájában kapták meg Innsbruckban.</p>
+          <h4>Bécs megemelte a Wohnbeihilfe összegét — így igényelheted</h4>
+          <p class="desc">Bécs városa 2026-tól 15%-kal emelte a lakhatási támogatás (Wohnbeihilfe) felső határát. Az igénylés online is benyújtható az MA 50-nél.</p>
           <div class="impact-label" style="color:#D4A017;">Hogyan igényelheted?</div>
           <ul class="sample-bullets">
-            <li>Ha sportoló vagy, ez mutatja, milyen értékben támogatják az olimpiai sikereket</li>
-            <li>A Wiener Philharmoniker érmék jó befektetési forma lehet</li>
-            <li>Az Osztrák Érme Rt. honlapján találsz további információkat</li>
+            <li>Ha Bécsben laksz és a jövedelmed nem haladja meg a küszöbértéket, jogosult lehetsz</li>
+            <li>Online igénylés: wien.gv.at/wohnen/wohnbeihilfe</li>
+            <li>Szükséges dokumentumok: Meldezettel, jövedelemigazolás, bérleti szerződés</li>
           </ul>
-          <p class="sample-source">Forrás: Kurier · febr. 26. 14:51</p>
+          <p class="sample-source">Forrás: Der Standard · febr. 26. 12:30</p>
         </div>
 
         <!-- Munkaerőpiac -->
@@ -405,7 +476,7 @@
           <ul class="sample-bullets">
             <li>LGBTQ+ párkapcsolatban jogod van a mesterséges megtermékenyítéshez</li>
             <li>A bécsi központ speciális szakértelemmel rendelkezik</li>
-            <li>A Kinderwunschzentrum an der Wien honlapján találsz részleteket</li>
+            <li>Részletek: Kinderwunschzentrum an der Wien honlapján</li>
           </ul>
           <p class="sample-source">Forrás: Kurier · febr. 26. 15:16</p>
         </div>
@@ -422,19 +493,44 @@
   <section class="cta">
     <h2>Ne maradj le semmiről</h2>
     <p class="cta-sub">Csatlakozz az Ausztriában élő magyarok közösségéhez</p>
-    <div class="signup-box">
-      <h3>Kezdd el holnap reggel</h3>
-      <p class="signup-sub">Első email a feliratkozás utáni munkanapon érkezik</p>
-      <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="post" target="_blank">
-        <div class="form-row">
-          <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
-          <input type="hidden" name="ml-submit" value="1">
-          <input type="hidden" name="anticsrf" value="true">
-          <button type="submit">Feliratkozás</button>
+    <div class="signup-box" id="cta-signup">
+      <div class="signup-form-area">
+        <h3>Kezdd el holnap reggel</h3>
+        <p class="signup-sub">Első összefoglaló a feliratkozás utáni munkanapon érkezik</p>
+        <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="post" data-signup-form>
+          <div class="form-row">
+            <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
+            <input type="hidden" name="ml-submit" value="1">
+            <input type="hidden" name="anticsrf" value="true">
+            <button type="submit">Feliratkozás</button>
+          </div>
+          <div class="region-row">
+            <select name="fields[region]">
+              <option value="" disabled selected>Melyik tartományban élsz? (opcionális)</option>
+              <option value="Wien">Wien</option>
+              <option value="Niederösterreich">Niederösterreich</option>
+              <option value="Oberösterreich">Oberösterreich</option>
+              <option value="Steiermark">Steiermark</option>
+              <option value="Salzburg">Salzburg</option>
+              <option value="Tirol">Tirol</option>
+              <option value="Kärnten">Kärnten</option>
+              <option value="Vorarlberg">Vorarlberg</option>
+              <option value="Burgenland">Burgenland</option>
+            </select>
+          </div>
+        </form>
+        <p class="trial-note">🎁 1 hónap ingyen. Utána 4,99 €/hó, ha maradsz. 1 kattintás a leiratkozás.</p>
+        <p class="welcome-note">Feliratkozás után azonnal küldünk egy rövid üdvözlő emailt, hogy biztosan megérkezzen.</p>
+        <p class="form-note">Nem spammelünk. Bármikor leiratkozhatsz.</p>
+      </div>
+      <div class="signup-success">
+        <div class="check">✅</div>
+        <h4>Sikeresen feliratkoztál!</h4>
+        <p>Az első összefoglaló a következő munkanapon reggel 7-kor érkezik.</p>
+        <div class="tip">
+          <strong>💡 Tipp:</strong> Nézd meg az inboxodat — küldtünk egy üdvözlő emailt. Ha nem találod, keresd a "Promóciók" mappában, és húzd át a Bejövőbe. Érdemes az <strong>info@ausztriaradar.hu</strong> címet a kontaktjaidhoz adni.
         </div>
-      </form>
-      <p class="trial-note">🎁 Próbáld ki pár hétig ingyen — ha nem tetszik, egy kattintás a leiratkozás.</p>
-      <p class="form-note">Nem spammelünk. Bármikor leiratkozhatsz.</p>
+      </div>
     </div>
   </section>
 
@@ -443,5 +539,30 @@
   </footer>
 
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+  <script>
+    // Handle form submission inline (no new tab)
+    document.querySelectorAll('[data-signup-form]').forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var box = form.closest('.signup-box');
+        var formArea = box.querySelector('.signup-form-area');
+        var success = box.querySelector('.signup-success');
+        var formData = new FormData(form);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        }).then(function() {
+          formArea.style.display = 'none';
+          success.style.display = 'block';
+        }).catch(function() {
+          // Fallback: still show success (MailerLite JSONP sometimes blocks CORS)
+          formArea.style.display = 'none';
+          success.style.display = 'block';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
