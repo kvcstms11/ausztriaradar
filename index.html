@@ -104,7 +104,7 @@
     .signup-box .signup-sub {
       font-size: 13px; color: var(--teal-dark); margin-bottom: 14px;
     }
-    .form-row { display: flex; gap: 10px; }
+    .form-row { display: flex; flex-direction: column; gap: 10px; }
     .form-row input[type="email"] {
       flex: 1; padding: 12px 16px;
       border: 2px solid #E0E8ED; border-radius: 10px;
@@ -113,11 +113,11 @@
     }
     .form-row input[type="email"]:focus { border-color: var(--teal-dark); }
     .form-row button {
-      padding: 12px 24px; background: var(--red); color: var(--white);
+      padding: 14px 24px; background: var(--red); color: var(--white);
       border: none; border-radius: 10px;
-      font-size: 15px; font-weight: 700; font-family: inherit;
+      font-size: 16px; font-weight: 700; font-family: inherit;
       cursor: pointer; transition: background 0.2s, transform 0.1s;
-      white-space: nowrap;
+      width: 100%;
     }
     .form-row button:hover { background: #C62D3A; transform: translateY(-1px); }
     .region-row {
@@ -280,8 +280,6 @@
       .features { grid-template-columns: 1fr 1fr; gap: 10px; }
     }
     @media (max-width: 520px) {
-      .form-row { flex-direction: column; }
-      .form-row button { width: 100%; }
       .signup-box { padding: 20px 18px; }
     }
     @media (max-width: 360px) { .features { grid-template-columns: 1fr; } }
@@ -296,18 +294,18 @@
         <img class="flag-img" src="https://flagcdn.com/w40/at.png" alt="🇦🇹"> Osztrák hírek <img class="flag-img" src="https://flagcdn.com/w40/hu.png" alt="🇭🇺"> magyar nyelven
       </div>
       <h1>Ausztria <span class="accent">Radar</span></h1>
-      <p class="subtitle">Napi összefoglaló: osztrák hírek, szabályok, támogatások — magyarul, érthetően. 3 perc olvasás, minden reggel az email-jeid között.</p>
+      <p class="subtitle">Nem beszélsz németül? Mi elolvassuk helyetted: mi történt, mit jelent neked, mi a következő lépés.</p>
 
       <div class="signup-box" id="hero-signup">
         <div class="signup-form-area">
-          <h3>Iratkozz fel — 1 hónap ingyen próbaidő</h3>
+          <h3>Próbáld ki 1 hónapig ingyen</h3>
           <p class="signup-sub">Hétfőtől péntekig napi összefoglaló + szombaton gyakorlati útmutató</p>
           <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="post" data-signup-form>
             <div class="form-row">
               <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
               <input type="hidden" name="ml-submit" value="1">
               <input type="hidden" name="anticsrf" value="true">
-              <button type="submit">Feliratkozás</button>
+              <button type="submit">1 hónap ingyen kipróbálom</button>
             </div>
             <div class="region-row">
               <select name="fields[region]">
@@ -324,7 +322,7 @@
               </select>
             </div>
           </form>
-          <p class="trial-note">🎁 1 hónap ingyen. Utána 4,99 €/hó, ha maradsz. 1 kattintás a leiratkozás.</p>
+          <p class="trial-note">Áprilistól 4,99 €/hó, ha maradsz. Nincs hűségidő.</p>
           <p class="welcome-note">Feliratkozás után azonnal küldünk egy rövid üdvözlő emailt, hogy biztosan megérkezzen.</p>
           <p class="form-note">Nem spammelünk. Bármikor leiratkozhatsz.</p>
         </div>
@@ -504,7 +502,7 @@
             <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
             <input type="hidden" name="ml-submit" value="1">
             <input type="hidden" name="anticsrf" value="true">
-            <button type="submit">Feliratkozás</button>
+            <button type="submit">Feliratkozom (1 hónap ingyen)</button>
           </div>
           <div class="region-row">
             <select name="fields[region]">
@@ -521,7 +519,7 @@
             </select>
           </div>
         </form>
-        <p class="trial-note">🎁 1 hónap ingyen. Utána 4,99 €/hó, ha maradsz. 1 kattintás a leiratkozás.</p>
+        <p class="trial-note">Áprilistól 4,99 €/hó, ha maradsz. Nincs hűségidő.</p>
         <p class="welcome-note">Feliratkozás után azonnal küldünk egy rövid üdvözlő emailt, hogy biztosan megérkezzen.</p>
         <p class="form-note">Nem spammelünk. Bármikor leiratkozhatsz.</p>
       </div>
