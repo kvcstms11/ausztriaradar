@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ausztria Radar — Adatkezelési tájékoztató</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1D3557" />
+  <style>
+    :root{
+      --bg:#1D3557;
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --border:rgba(255,255,255,.14);
+      --accent:rgba(168,218,220,.9);
+      --accent-hover:rgba(168,218,220,1);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:860px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background:
+        radial-gradient(900px 450px at 15% 10%, rgba(168,218,220,.10), transparent 60%),
+        radial-gradient(800px 400px at 85% 20%, rgba(241,250,238,.06), transparent 60%),
+        var(--bg);
+    }
+    a{ color:var(--accent); }
+    a:hover{ color:var(--accent-hover); text-decoration:underline; }
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px 18px 56px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    h1{ margin:0 0 8px; font-size:24px; letter-spacing:-.3px; }
+    h2{ margin:22px 0 8px; font-size:15px; letter-spacing:.2px; font-weight:900; }
+    p{ margin:0 0 10px; color:rgba(255,255,255,.82); font-size:14.5px; }
+    .muted{ color:var(--muted); font-size:13px; }
+    ul{ margin:8px 0 12px; padding-left:18px; color:rgba(255,255,255,.82); font-size:14.5px; }
+    li{ margin:6px 0; }
+    .topline{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .pill{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      color:rgba(255,255,255,.78);
+      white-space:nowrap;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:10px 0 14px;
+      font-size:13.5px;
+    }
+    th, td{
+      text-align:left;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      color:rgba(255,255,255,.82);
+    }
+    th{
+      background:rgba(255,255,255,.06);
+      font-weight:900;
+      font-size:12.5px;
+      color:rgba(255,255,255,.70);
+      text-transform:uppercase;
+      letter-spacing:.3px;
+    }
+    .back{
+      display:inline-block;
+      margin-bottom:14px;
+      font-size:13px;
+      color:rgba(255,255,255,.60);
+      text-decoration:none;
+    }
+    .back:hover{ color:rgba(255,255,255,.80); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="./index.html">← Vissza a főoldalra</a>
+    <div class="card">
+      <div class="topline">
+        <h1>Adatkezelési tájékoztató</h1>
+        <div class="pill">🇦🇹 Ausztria Radar</div>
+      </div>
+
+      <p class="muted">
+        Utolsó frissítés: <strong>2026. március 5.</strong>
+      </p>
+
+      <!-- 1. ADATKEZELŐ -->
+      <h2>1. Adatkezelő</h2>
+      <p>
+        <strong>Kovács Tamás</strong><br/>
+        E-mail: <a href="mailto:info@ausztriaradar.hu">info@ausztriaradar.hu</a><br/>
+        Weboldal: <a href="https://ausztriaradar.hu">ausztriaradar.hu</a>
+      </p>
+
+      <!-- 2. KEZELT ADATOK -->
+      <h2>2. Milyen adatokat kezelünk?</h2>
+
+      <table>
+        <tr>
+          <th>Adat</th>
+          <th>Forrás</th>
+          <th>Cél</th>
+        </tr>
+        <tr>
+          <td>E-mail cím</td>
+          <td>Feliratkozási űrlap (MailerLite)</td>
+          <td>Napi hírlevél kiküldése, szolgáltatással kapcsolatos értesítések</td>
+        </tr>
+        <tr>
+          <td>Fizetési adatok (kártya, számlázási cím)</td>
+          <td>Stripe</td>
+          <td>Előfizetés feldolgozása — az adatkezelő ezeket közvetlenül nem tárolja, a Stripe mint adatfeldolgozó kezeli</td>
+        </tr>
+        <tr>
+          <td>Név, e-mail, üzenet</td>
+          <td>Kapcsolatfelvételi űrlap</td>
+          <td>Megkeresés megválaszolása</td>
+        </tr>
+        <tr>
+          <td>Technikai adatok</td>
+          <td>MailerLite (megnyitási és kattintási statisztikák)</td>
+          <td>Hírlevél minőségének javítása, kézbesíthetőség biztosítása</td>
+        </tr>
+      </table>
+
+      <p class="muted">
+        A hírlevél a Google SMTP infrastruktúráján keresztül kerül kiküldésre.
+        A feliratkozók e-mail címei titkos másolatban (BCC) szerepelnek — a címzettek nem látják egymás adatait.
+      </p>
+
+      <!-- 3. JOGALAP -->
+      <h2>3. Az adatkezelés jogalapja</h2>
+      <ul>
+        <li><strong>Hírlevél feliratkozás (e-mail cím):</strong> hozzájárulás (GDPR 6. cikk (1) a) — bármikor visszavonható a leiratkozás linkre kattintva vagy az <a href="mailto:info@ausztriaradar.hu">info@ausztriaradar.hu</a> címre küldött kéréssel.</li>
+        <li><strong>Előfizetés (fizetési adatok):</strong> szerződés teljesítése (GDPR 6. cikk (1) b) — az előfizetői szolgáltatás nyújtásához szükséges.</li>
+        <li><strong>Kapcsolatfelvételi űrlap:</strong> hozzájárulás (GDPR 6. cikk (1) a) — bármikor visszavonható.</li>
+        <li><strong>Szolgáltatással kapcsolatos értesítések</strong> (pl. technikai probléma, árazási változás): jogos érdek (GDPR 6. cikk (1) f) — az előfizetők tájékoztatása a szolgáltatás működéséről.</li>
+      </ul>
+
+      <!-- 4. ADATFELDOLGOZÓK -->
+      <h2>4. Adatfeldolgozók és harmadik felek</h2>
+      <table>
+        <tr>
+          <th>Szolgáltató</th>
+          <th>Szerep</th>
+          <th>Székhely</th>
+        </tr>
+        <tr>
+          <td>MailerLite (UAB MailerLite)</td>
+          <td>Feliratkozók kezelése, e-mail statisztikák</td>
+          <td>Litvánia (EU)</td>
+        </tr>
+        <tr>
+          <td>Google LLC (Gmail SMTP)</td>
+          <td>Hírlevél kiküldése</td>
+          <td>USA (EU Standard Contractual Clauses)</td>
+        </tr>
+        <tr>
+          <td>Stripe, Inc.</td>
+          <td>Fizetés feldolgozása, előfizetés kezelése</td>
+          <td>USA (EU Standard Contractual Clauses)</td>
+        </tr>
+        <tr>
+          <td>n8n GmbH (n8n Cloud)</td>
+          <td>Automatizált hírlevél-összeállítás</td>
+          <td>Németország (EU)</td>
+        </tr>
+        <tr>
+          <td>Anthropic, PBC (Claude API)</td>
+          <td>Hírek összefoglalása és fordítása</td>
+          <td>USA (EU Standard Contractual Clauses)</td>
+        </tr>
+        <tr>
+          <td>ImprovMX</td>
+          <td>E-mail továbbítás (info@ausztriaradar.hu)</td>
+          <td>Franciaország (EU)</td>
+        </tr>
+        <tr>
+          <td>GitHub Pages (Microsoft)</td>
+          <td>Weboldal hosting</td>
+          <td>USA (EU Standard Contractual Clauses)</td>
+        </tr>
+        <tr>
+          <td>Rackhost Zrt.</td>
+          <td>Domain regisztráció, DNS kezelés</td>
+          <td>Magyarország (EU)</td>
+        </tr>
+      </table>
+
+      <!-- 5. AI FELDOLGOZÁS -->
+      <h2>5. AI-alapú tartalom-előállítás</h2>
+      <p>
+        A napi hírlevél tartalma automatizált rendszerrel készül: nyilvánosan elérhető osztrák hírforrások (ORF, Der Standard, Die Presse, Kurier és mások) RSS-feedjeiből gyűjtött híreket a Claude AI összefoglalja és magyarra fordítja. A folyamatban kizárólag nyilvános híranyagok kerülnek feldolgozásra — feliratkozói személyes adatok nem jutnak el az AI rendszerhez.
+      </p>
+
+      <!-- 6. ADATTÁROLÁS -->
+      <h2>6. Adattárolás időtartama</h2>
+      <ul>
+        <li><strong>Feliratkozói e-mail:</strong> a leiratkozást követő 30 napon belül törlésre kerül a MailerLite rendszeréből.</li>
+        <li><strong>Fizetési adatok:</strong> a Stripe saját adatkezelési szabályzata szerint (kötelező pénzügyi nyilvántartási időszak).</li>
+        <li><strong>Kapcsolatfelvételi adatok:</strong> a megkeresés lezárásától számított legfeljebb 12 hónapig.</li>
+        <li><strong>E-mail statisztikák (megnyitás, kattintás):</strong> a MailerLite rendszerében aggregált, anonimizált formában.</li>
+      </ul>
+
+      <!-- 7. ÉRINTETTI JOGOK -->
+      <h2>7. Az érintett jogai</h2>
+      <p>A GDPR alapján az alábbi jogok illetik meg:</p>
+      <ul>
+        <li>Tájékoztatáshoz és hozzáféréshez való jog</li>
+        <li>Helyesbítéshez való jog</li>
+        <li>Törléshez való jog ("elfeledtetés joga")</li>
+        <li>Az adatkezelés korlátozásához való jog</li>
+        <li>Adathordozhatósághoz való jog</li>
+        <li>Tiltakozáshoz való jog</li>
+        <li>Hozzájárulás visszavonása (ahol a jogalap hozzájárulás)</li>
+      </ul>
+      <p>
+        Joggyakorláshoz írj az <a href="mailto:info@ausztriaradar.hu">info@ausztriaradar.hu</a> címre.
+        A kérelmekre legfeljebb 30 napon belül válaszolunk.
+      </p>
+
+      <!-- 8. LEIRATKOZÁS -->
+      <h2>8. Leiratkozás</h2>
+      <p>
+        A hírlevélről bármikor leiratkozhatsz. Ehhez kattints a hírlevél alján található "Leiratkozás" linkre,
+        vagy küldj egy e-mailt az <a href="mailto:info@ausztriaradar.hu?subject=Leiratkozás">info@ausztriaradar.hu</a> címre
+        "Leiratkozás" tárggyal. A leiratkozás feldolgozása legfeljebb 48 órát vesz igénybe.
+      </p>
+
+      <!-- 9. PANASZ -->
+      <h2>9. Panasz</h2>
+      <p>
+        Panasz benyújtható a lakóhely szerint illetékes felügyeleti hatóságnál:
+      </p>
+      <ul>
+        <li><strong>Magyarország:</strong> Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH) — <a href="https://naih.hu" target="_blank" rel="noopener">naih.hu</a></li>
+        <li><strong>Ausztria:</strong> Datenschutzbehörde (DSB) — <a href="https://dsb.gv.at" target="_blank" rel="noopener">dsb.gv.at</a></li>
+      </ul>
+
+      <!-- 10. COOKIE -->
+      <h2>10. Cookie-k és nyomkövetés</h2>
+      <p>
+        Az ausztriaradar.hu weboldal nem használ saját cookie-kat és nem alkalmaz nyomkövetést (analytics).
+        A MailerLite feliratkozási űrlap saját cookie-kat helyezhet el —
+        ezekre a MailerLite adatkezelési szabályzata vonatkozik.
+      </p>
+
+      <!-- 11. MÓDOSÍTÁS -->
+      <h2>11. Tájékoztató módosítása</h2>
+      <p>
+        Az adatkezelő fenntartja a jogot a tájékoztató módosítására.
+        A módosítás dátumát az oldal tetején jelezzük.
+        Lényeges változás esetén az aktív feliratkozókat a hírlevélben értesítjük.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
