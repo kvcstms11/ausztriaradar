@@ -116,10 +116,11 @@
       padding: 14px 24px; background: var(--red); color: var(--white);
       border: none; border-radius: 10px;
       font-size: 16px; font-weight: 700; font-family: inherit;
-      cursor: pointer; transition: background 0.2s, transform 0.1s;
+      cursor: pointer; transition: background 0.2s, transform 0.1s, opacity 0.2s;
       width: 100%;
     }
-    .form-row button:hover { background: #C62D3A; transform: translateY(-1px); }
+    .form-row button:hover:not(:disabled) { background: #C62D3A; transform: translateY(-1px); }
+    .form-row button:disabled { opacity: 0.5; cursor: not-allowed; }
     .region-row {
       margin-top: 10px;
     }
@@ -146,6 +147,42 @@
     .form-note { font-size: 12px; color: #999; margin-top: 10px; }
     .trial-note { font-size: 13px; color: var(--teal-dark); margin-top: 8px; font-weight: 500; }
     .welcome-note { font-size: 12px; color: #999; margin-top: 6px; }
+
+    /* ─── GDPR CONSENT ─── */
+    .gdpr-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 12px;
+      text-align: left;
+    }
+    .gdpr-row input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--teal-dark);
+      cursor: pointer;
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+    }
+    .gdpr-row label {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    .gdpr-row label a {
+      color: var(--teal-dark);
+      text-decoration: underline;
+    }
+    .gdpr-row label a:hover {
+      color: var(--navy);
+    }
+    .cta .gdpr-row label {
+      color: rgba(168,218,220,0.7);
+    }
+    .cta .gdpr-row label a {
+      color: var(--teal);
+    }
 
     /* ─── SUCCESS MESSAGE ─── */
     .signup-success {
@@ -354,7 +391,11 @@
               <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
               <input type="hidden" name="ml-submit" value="1">
               <input type="hidden" name="anticsrf" value="true">
-              <button type="submit">1 hónap ingyen kipróbálom</button>
+              <div class="gdpr-row">
+                <input type="checkbox" id="gdpr-hero" class="gdpr-consent" required>
+                <label for="gdpr-hero">Elfogadom az <a href="./adatkezeles.html" target="_blank">Adatkezelési tájékoztatóban</a> leírtakat.</label>
+              </div>
+              <button type="submit" disabled>1 hónap ingyen kipróbálom</button>
             </div>
             <div class="region-row">
               <select name="fields[region]">
@@ -428,7 +469,6 @@
 
         <div class="sample-divider">🔥 A nap 3 legfontosabb híre</div>
 
-        <!-- TOP 1 — osztrák belügy -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge top">TOP 1</span>
@@ -445,7 +485,6 @@
           <p class="sample-source">Forrás: ORF · febr. 26. 16:32</p>
         </div>
 
-        <!-- TOP 2 — osztrák munkajog -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge top">TOP 2</span>
@@ -462,7 +501,6 @@
           <p class="sample-source">Forrás: Der Standard · febr. 26. 14:20</p>
         </div>
 
-        <!-- TOP 3 — osztrák fogyasztóvédelem -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge top">TOP 3</span>
@@ -481,7 +519,6 @@
 
         <div class="sample-divider normal">📰 További fontos hírek</div>
 
-        <!-- Valódi támogatás: Wohnbeihilfe -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge grant">TÁMOGATÁS</span>
@@ -498,7 +535,6 @@
           <p class="sample-source">Forrás: Der Standard · febr. 26. 12:30</p>
         </div>
 
-        <!-- Munkaerőpiac -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge cat">👷 Munkaerőpiac</span>
@@ -514,7 +550,6 @@
           <p class="sample-source">Forrás: Krone · febr. 26. 16:24</p>
         </div>
 
-        <!-- Társadalom -->
         <div class="sample-item">
           <div class="sample-badges">
             <span class="sample-badge cat">🤝 Társadalom</span>
@@ -551,7 +586,11 @@
             <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
             <input type="hidden" name="ml-submit" value="1">
             <input type="hidden" name="anticsrf" value="true">
-            <button type="submit">Feliratkozom (1 hónap ingyen)</button>
+            <div class="gdpr-row">
+              <input type="checkbox" id="gdpr-cta" class="gdpr-consent" required>
+              <label for="gdpr-cta">Elfogadom az <a href="./adatkezeles.html" target="_blank">Adatkezelési tájékoztatóban</a> leírtakat.</label>
+            </div>
+            <button type="submit" disabled>Feliratkozom (1 hónap ingyen)</button>
           </div>
           <div class="region-row">
             <select name="fields[region]">
@@ -584,11 +623,22 @@
   </section>
 
   <footer>
-    <p>© 2026 Ausztria Radar · <a href="mailto:info@ausztriaradar.hu">Kapcsolat</a> <a href="./adatkezeles.html">Adatkezelési tájékoztató</a>· Készült Grazban 🇦🇹</p>
+    <p>© 2026 Ausztria Radar · <a href="mailto:info@ausztriaradar.hu">Kapcsolat</a> · <a href="./adatkezeles.html">Adatkezelési tájékoztató</a> · Készült Grazban 🇦🇹</p>
   </footer>
 
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
   <script>
+    // GDPR checkbox → enable/disable submit button
+    document.querySelectorAll('.gdpr-consent').forEach(function(cb) {
+      var form = cb.closest('form');
+      var btn = form ? form.querySelector('button[type="submit"]') : null;
+      if (btn) {
+        cb.addEventListener('change', function() {
+          btn.disabled = !cb.checked;
+        });
+      }
+    });
+
     // Handle form submission inline (no new tab)
     document.querySelectorAll('[data-signup-form]').forEach(function(form) {
       form.addEventListener('submit', function(e) {
@@ -606,7 +656,6 @@
           formArea.style.display = 'none';
           success.style.display = 'block';
         }).catch(function() {
-          // Fallback: still show success (MailerLite JSONP sometimes blocks CORS)
           formArea.style.display = 'none';
           success.style.display = 'block';
         });
