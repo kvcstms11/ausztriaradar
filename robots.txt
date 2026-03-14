@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ausztriaradar.hu/sitemap.xml
