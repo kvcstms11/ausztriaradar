@@ -665,41 +665,37 @@
     <p>© 2026 Ausztria Radar · <a href="mailto:info@ausztriaradar.hu">Kapcsolat</a> · <a href="./adatkezeles.html">Adatkezelési tájékoztató</a> · Készült Grazban 🇦🇹</p>
   </footer>
 
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
   <script>
-    // GDPR checkbox → enable/disable submit button
-    document.querySelectorAll('.gdpr-consent').forEach(function(cb) {
-      var form = cb.closest('form');
-      var btn = form ? form.querySelector('button[type="submit"]') : null;
-      if (btn) {
-        cb.addEventListener('change', function() {
-          btn.disabled = !cb.checked;
-        });
-      }
-    });
-
-    // Handle form submission inline (no new tab)
-    document.querySelectorAll('[data-signup-form]').forEach(function(form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var box = form.closest('.signup-box');
-        var formArea = box.querySelector('.signup-form-area');
-        var success = box.querySelector('.signup-success');
-        var formData = new FormData(form);
-
-        fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          mode: 'no-cors'
-        }).then(function() {
-          formArea.style.display = 'none';
-          success.style.display = 'block';
-        }).catch(function() {
-          formArea.style.display = 'none';
-          success.style.display = 'block';
-        });
+  // GDPR checkbox → enable/disable submit button
+  document.querySelectorAll('.gdpr-consent').forEach(function(cb) {
+    var form = cb.closest('form');
+    var btn = form ? form.querySelector('button[type="submit"]') : null;
+    if (btn) {
+      cb.addEventListener('change', function() {
+        btn.disabled = !cb.checked;
       });
+    }
+  });
+
+  // Handle form submission via hidden iframe
+  document.querySelectorAll('[data-signup-form]').forEach(function(form) {
+    var iframeName = 'ml-submit-' + Math.random().toString(36).slice(2);
+    var iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    form.target = iframeName;
+
+    form.addEventListener('submit', function() {
+      var box = form.closest('.signup-box');
+      var formArea = box.querySelector('.signup-form-area');
+      var success = box.querySelector('.signup-success');
+      setTimeout(function() {
+        formArea.style.display = 'none';
+        success.style.display = 'block';
+      }, 1500);
     });
-  </script>
+  });
+</script>
 </body>
 </html>
