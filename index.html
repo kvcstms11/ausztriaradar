@@ -425,7 +425,7 @@
         <div class="signup-form-area">
           <h3>Próbáld ki 1 hónapig ingyen</h3>
           <p class="signup-sub">Hétfőtől péntekig napi összefoglaló + szombaton gyakorlati útmutató</p>
-          <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="GET" data-signup-form>
+          <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="post" data-signup-form>
             <div class="form-row">
               <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
               <input type="hidden" name="ml-submit" value="1">
@@ -620,7 +620,7 @@
       <div class="signup-form-area">
         <h3>Kezdd el holnap reggel</h3>
         <p class="signup-sub">Első összefoglaló a feliratkozás utáni munkanapon érkezik</p>
-        <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="GET" data-signup-form>
+        <form action="https://assets.mailerlite.com/jsonp/1227172/forms/180756914698716491/subscribe" method="post" data-signup-form>
           <div class="form-row">
             <input type="email" name="fields[email]" placeholder="email@cimed.hu" required autocomplete="email">
             <input type="hidden" name="ml-submit" value="1">
@@ -665,7 +665,8 @@
     <p>© 2026 Ausztria Radar · <a href="mailto:info@ausztriaradar.hu">Kapcsolat</a> · <a href="./adatkezeles.html">Adatkezelési tájékoztató</a> · Készült Grazban 🇦🇹</p>
   </footer>
 
-  <script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+<script>
   // GDPR checkbox → enable/disable submit button
   document.querySelectorAll('.gdpr-consent').forEach(function(cb) {
     var form = cb.closest('form');
@@ -677,23 +678,46 @@
     }
   });
 
-  // Handle form submission via hidden iframe
+  // JSONP form submission
   document.querySelectorAll('[data-signup-form]').forEach(function(form) {
-    var iframeName = 'ml-submit-' + Math.random().toString(36).slice(2);
-    var iframe = document.createElement('iframe');
-    iframe.name = iframeName;
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    form.target = iframeName;
-
-    form.addEventListener('submit', function() {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
       var box = form.closest('.signup-box');
       var formArea = box.querySelector('.signup-form-area');
       var success = box.querySelector('.signup-success');
-      setTimeout(function() {
+      var email = form.querySelector('input[type="email"]').value;
+      var region = form.querySelector('select') ? form.querySelector('select').value : '';
+
+      var callbackName = 'ml_cb_' + Math.random().toString(36).slice(2);
+      window[callbackName] = function() {
         formArea.style.display = 'none';
         success.style.display = 'block';
-      }, 1500);
+        delete window[callbackName];
+      };
+
+      var url = form.action
+        + '?fields[email]=' + encodeURIComponent(email)
+        + '&ml-submit=1'
+        + '&anticsrf=true'
+        + '&ajax=1'
+        + '&callback=' + callbackName;
+      if (region) url += '&fields[region]=' + encodeURIComponent(region);
+
+      var script = document.createElement('script');
+      script.src = url;
+      script.onerror = function() {
+        formArea.style.display = 'none';
+        success.style.display = 'block';
+      };
+      document.body.appendChild(script);
+
+      // Fallback: ha 5 mp után sem jött callback, mutasd a sikert
+      setTimeout(function() {
+        if (formArea.style.display !== 'none') {
+          formArea.style.display = 'none';
+          success.style.display = 'block';
+        }
+      }, 5000);
     });
   });
 </script>
